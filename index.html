@@ -93,7 +93,7 @@
   /* ===== HERO ===== */
   .hero {
     display: flex; align-items: center;
-    padding: 48px 0 80px;
+    padding: 48px 0 140px;
     background: var(--abyss);
     position: relative;
     overflow: hidden;
@@ -121,7 +121,7 @@
   .hero .hero-note { margin-top: 32px; font-size: 13px; color: var(--teal); letter-spacing: 0.5px; }
 
   /* ===== PROBLEM ===== */
-  .problem { padding: var(--section-pad) 0; background: var(--kelp); }
+  .problem { padding: clamp(32px, 5vw, 60px) 0; background: var(--kelp); }
   .problem-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px; margin-top: 40px;
@@ -139,9 +139,9 @@
   .problem-card p { font-size: 14px; color: var(--warmgray); line-height: 1.7; }
 
   /* ===== SERVICES ===== */
-  .services { padding: var(--section-pad) 0; background: var(--abyss); }
+  .services { padding: clamp(32px, 5vw, 60px) 0; background: var(--abyss); }
   .services-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 20px; margin-top: 40px;
   }
   .service-card {
@@ -149,6 +149,7 @@
     border: 1px solid rgba(42,122,102,0.2);
     border-radius: 8px;
     transition: border-color 0.4s, background 0.4s, transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
   }
   .service-card:hover {
     border-color: var(--submarine); background: rgba(11,53,42,0.3);
@@ -160,7 +161,7 @@
   .service-card p { font-size: 14px; color: var(--warmgray); line-height: 1.7; }
 
   /* ===== PROCESS ===== */
-  .process { padding: var(--section-pad) 0; background: var(--kelp); }
+  .process { padding: clamp(32px, 5vw, 60px) 0; background: var(--kelp); }
   .process-steps { display: flex; gap: 0; margin-top: 48px; position: relative; }
   .step { flex: 1; text-align: center; position: relative; padding: 0 16px; }
   .step-num {
@@ -174,7 +175,7 @@
   .step p { font-size: 14px; color: var(--warmgray); line-height: 1.6; }
 
   /* ===== AUDIENCE ===== */
-  .audience { padding: var(--section-pad) 0; background: var(--abyss); }
+  .audience { padding: clamp(32px, 5vw, 60px) 0; background: var(--abyss); }
   .audience-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
     margin-top: 40px; align-items: start;
@@ -224,7 +225,7 @@
   .stat .label { font-size: 12px; color: var(--warmgray); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
 
   /* ===== ABOUT ===== */
-  .about { padding: var(--section-pad) 0; background: var(--abyss); }
+  .about { padding: clamp(32px, 5vw, 60px) 0; background: var(--abyss); }
   .about-inner {
     display: grid; grid-template-columns: 1fr 2fr; gap: 48px;
     margin-top: 40px; align-items: start;
@@ -244,7 +245,7 @@
   }
 
   /* ===== FAQ ===== */
-  .faq { padding: var(--section-pad) 0; background: var(--kelp); }
+  .faq { padding: clamp(32px, 5vw, 60px) 0; background: var(--kelp); }
   .faq-list { margin-top: 40px; max-width: 720px; }
   .faq-item { border-bottom: 1px solid rgba(42,122,102,0.15); padding: 24px 0; }
   .faq-item summary {
@@ -259,7 +260,7 @@
 
   /* ===== FINAL CTA ===== */
   .final-cta {
-    padding: var(--section-pad) 0; background: var(--abyss);
+    padding: clamp(32px, 5vw, 60px) 0; background: var(--abyss);
     text-align: center; position: relative;
   }
   .final-cta::before {
@@ -355,10 +356,11 @@
     border-color: var(--submarine); background: rgba(243,201,79,0.08);
   }
   .booking-form .form-submit {
-    width: 100%; margin-top: 8px;
+    width: 100%; margin-top: 8px; justify-content: center; text-align: center;
   }
 
   @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
     .booking-modal { padding: 32px 20px; }
     .booking-form .checkbox-group, .booking-form .radio-group { flex-direction: column; }
   }
@@ -369,8 +371,7 @@
     border-top: 1px solid rgba(42,122,102,0.12);
     background: var(--abyss);
   }
-  footer .container { display: flex; justify-content: space-between; align-items: center; }
-  footer .footer-right { font-size: 13px; color: var(--warmgray); }
+  footer .container { display: flex; justify-content: center; align-items: center; }
   footer a { color: var(--submarine); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
@@ -384,6 +385,7 @@
   .js-loaded .stagger.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
   .js-loaded .stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
   .js-loaded .stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+  .js-loaded .stagger.visible > *:nth-child(n+7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
 
   /* ===== PROCESS LINE DRAW ===== */
   .step-num { transition: background 0.5s ease, box-shadow 0.5s ease; }
@@ -514,6 +516,46 @@
     100% { transform: rotate(0deg) scale(1.15); }
   }
   .service-card:hover .service-icon { animation: iconWobble 0.45s ease forwards; }
+  .service-card .learn-more {
+    display: inline-block; margin-top: 16px;
+    font-family: 'Michroma', sans-serif; font-size: 10px; letter-spacing: 2px;
+    color: var(--submarine); text-decoration: none; text-transform: uppercase;
+    transition: color 0.3s; cursor: pointer; background: none; border: none; padding: 0;
+  }
+  .service-card .learn-more:hover { color: #e5bc3e; }
+
+  /* ===== SERVICE MODAL ===== */
+  .service-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4,23,17,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    z-index: 500; overflow-y: auto; padding: 40px 24px;
+  }
+  .service-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
+  .service-modal {
+    background: var(--kelp); border: 1px solid rgba(42,122,102,0.2);
+    border-radius: 12px; max-width: 600px; width: 100%; padding: 48px 40px;
+    position: relative; margin: auto;
+  }
+  .service-modal .modal-close {
+    position: absolute; top: 16px; right: 16px; background: none; border: none;
+    color: var(--warmgray); font-size: 24px; cursor: pointer; padding: 8px;
+    line-height: 1; transition: color 0.3s;
+  }
+  .service-modal .modal-close:hover { color: var(--offwhite); }
+  .service-modal h2 {
+    font-family: 'Michroma', sans-serif; font-size: 20px; letter-spacing: 2px;
+    color: #fff; margin-bottom: 16px;
+  }
+  .service-modal p { font-size: 15px; color: var(--warmgray); line-height: 1.8; margin-bottom: 16px; }
+  .service-modal ul { list-style: none; padding: 0; margin-bottom: 24px; }
+  .service-modal ul li {
+    font-size: 14px; color: var(--offwhite); line-height: 1.7;
+    padding: 8px 0; border-bottom: 1px solid rgba(42,122,102,0.1);
+  }
+  .service-modal ul li::before { content: '→ '; color: var(--submarine); font-weight: 700; }
+  @media (max-width: 600px) {
+    .service-modal { padding: 32px 20px; }
+  }
 
   /* ===== RADAR PING ===== */
   .sub-ping {
@@ -547,6 +589,7 @@
   }
 
   @media (max-width: 768px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
     .process-steps { flex-direction: column; gap: 32px; }
     .audience-grid { grid-template-columns: 1fr; }
     .about-inner { grid-template-columns: 1fr; }
@@ -611,9 +654,9 @@
       <a href="#book" class="cta-btn">Book a Strategy Call</a>
       <a href="#services" class="cta-btn-outline">What We Do</a>
     </div>
-    <p class="hero-note fade-up-d3">Currently accepting 3–5 new partners</p>
+    <!-- <p class="hero-note fade-up-d3">Currently accepting 3–5 new partners</p> -->
   </div>
-  <div class="sub-divider" style="position: absolute; bottom: 0; left: 0; right: 0;">
+  <div class="sub-divider" style="position: absolute; bottom: 28px; left: 0; right: 0;">
     <div class="sub-trail"></div>
     <svg class="sub-icon" width="56" height="40" viewBox="0 0 62 48" fill="none">
       <path d="M4 24 C4 17 9 14 16 14 L34 14 C41 14 46 17 46 24 C46 31 41 34 34 34 L16 34 C9 34 4 31 4 24Z" stroke="#F3C94F" stroke-width="2" fill="none"/>
@@ -680,31 +723,37 @@
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M12 8 A8 8 0 0 1 20 16" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M20 16 A8 8 0 0 1 12 24" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M12 24 A8 8 0 0 1 4 16" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M4 16 A8 8 0 0 1 9 9" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="12" cy="16" r="3" stroke="#F3C94F" stroke-width="1.5" fill="none"/><line x1="12" y1="12" x2="12" y2="4" stroke="#F3C94F" stroke-width="1.8" stroke-linecap="round"/><line x1="16" y1="16" x2="25" y2="16" stroke="#F3C94F" stroke-width="1.8" stroke-linecap="round"/></svg>
         <h3>AI Strategy & Audit</h3>
         <p>We start by understanding your business inside and out. Then we map exactly where AI creates the most value — and build a clear, prioritized roadmap to get there. No guesswork.</p>
+        <button class="learn-more" data-service="ai-strategy">Explore →</button>
       </div>
       <div class="service-card">
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="6" cy="14" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><circle cx="22" cy="6" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><circle cx="22" cy="22" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><line x1="9" y1="13" x2="19" y2="7" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="15" x2="19" y2="21" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/></svg>
         <h3>Workflow Automation</h3>
         <p>Those repetitive tasks eating up your day? We turn them into automated systems — lead routing, follow-ups, reporting, approvals — so your business runs even when you're not watching.</p>
+        <button class="learn-more" data-service="automation">Explore →</button>
       </div>
       <div class="service-card">
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="16" rx="2" stroke="#F3C94F" stroke-width="1.8" fill="none"/><line x1="3" y1="10" x2="25" y2="10" stroke="#F3C94F" stroke-width="1.5"/><circle cx="6.5" cy="7.5" r="1" fill="#F3C94F"/><circle cx="10" cy="7.5" r="1" fill="#F3C94F"/><line x1="8" y1="15" x2="14" y2="15" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="18" x2="18" y2="18" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/></svg>
         <h3>Custom Web Design</h3>
         <p>From landing pages to full web applications — we design and build digital experiences that reflect your brand and convert visitors into customers. Fast, modern, and built to grow with you.</p>
+        <button class="learn-more" data-service="web-design">Explore →</button>
       </div>
       <div class="service-card">
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><polyline points="4,20 10,14 16,17 24,8" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20,8 24,8 24,12" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="24" x2="24" y2="24" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/></svg>
         <h3>AI Marketing Solutions</h3>
         <p>Smarter campaigns powered by data, not guesswork. We build AI-driven marketing systems that automate outreach, optimize spend, and surface the insights that actually move the needle.</p>
+        <button class="learn-more" data-service="marketing">Explore →</button>
       </div>
       <div class="service-card">
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="18" rx="2.5" stroke="#F3C94F" stroke-width="1.8" fill="none"/><polyline points="8,13 12,16 8,19" stroke="#F3C94F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="14" y1="19" x2="20" y2="19" stroke="#F3C94F" stroke-width="1.8" stroke-linecap="round"/></svg>
         <h3>Custom Tool Development</h3>
         <p>Need something that doesn't exist yet? We build custom internal tools, dashboards, and AI agents designed specifically for your operations — not off-the-shelf, but built-for-you.</p>
+        <button class="learn-more" data-service="tool-dev">Explore →</button>
       </div>
       <div class="service-card">
         <svg class="service-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="8" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><circle cx="6" cy="20" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><circle cx="22" cy="20" r="3" stroke="#F3C94F" stroke-width="1.8" fill="none"/><line x1="12" y1="10.5" x2="8" y2="17.5" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="10.5" x2="20" y2="17.5" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/><line x1="9" y1="20" x2="19" y2="20" stroke="#F3C94F" stroke-width="1.5" stroke-linecap="round"/></svg>
         <h3>Data & Intelligence</h3>
         <p>Your business generates valuable data every day. We help you capture it, connect it, and turn it into actionable insights — competitive intel, customer patterns, market opportunities.</p>
+        <button class="learn-more" data-service="data-intel">Explore →</button>
       </div>
     </div>
   </div>
@@ -876,6 +925,7 @@
           <span class="about-tag">Lead Generation</span>
           <span class="about-tag">Marketing Intelligence</span>
           <span class="about-tag">Construction</span>
+          <span class="about-tag">Non-profit</span>
         </div>
       </div>
     </div>
@@ -904,7 +954,7 @@
     <h2 class="section-heading reveal">Questions we get a lot.</h2>
     <div class="faq-list reveal">
       <details class="faq-item">
-        <summary>What does a typical engagement look like?</summary>
+        <summary>What does a partnership with MeriScope look like?</summary>
         <div class="faq-answer">It starts with a strategy call so we can learn about your business. From there, we build a custom roadmap — usually delivered within a week. Then we roll up our sleeves and start building, typically over 4–8 weeks. We also offer ongoing retainers for teams that want continuous support and expansion.</div>
       </details>
       <details class="faq-item">
@@ -919,10 +969,10 @@
         <summary>I'm not technical. Is that a problem?</summary>
         <div class="faq-answer">Not at all — that's the whole point. You bring the business expertise and the vision. We handle the technical side. We'll make sure you understand what's being built and why, without drowning you in jargon.</div>
       </details>
-      <details class="faq-item">
+      <!-- <details class="faq-item">
         <summary>Why only 3–5 clients?</summary>
         <div class="faq-answer">Because this is hands-on work with real impact. We'd rather go deep with a few partners than spread thin across dozens. Limited capacity means you get our full attention and systems that are genuinely built for you.</div>
-      </details>
+      </details> -->
       <details class="faq-item">
         <summary>What happens after we launch?</summary>
         <div class="faq-answer">We don't build it and bounce. Post-launch includes monitoring, optimization, and making sure your team feels confident running everything. From there, you can continue with an ongoing retainer or fly solo — either way, you own everything we build.</div>
@@ -952,7 +1002,7 @@
     <h2 class="section-heading reveal">Ready to put AI to work for your business?</h2>
     <p class="section-body reveal">Book a free 30-minute strategy call. We'll talk about your business, explore where AI fits, and map out a path forward — whether you work with us or not.</p>
     <a href="#book" class="cta-btn reveal">Book Your Strategy Call</a>
-    <p class="limit-note reveal">Currently accepting 3–5 new partners.</p>
+    <!-- <p class="limit-note reveal">Currently accepting 3–5 new partners.</p> -->
   </div>
   <div class="sub-divider" style="margin-top: 48px;">
     <div class="sub-trail"></div>
@@ -984,12 +1034,20 @@
       <line x1="27" y1="11" x2="27" y2="17" stroke="#F3C94F" stroke-width="1.8" stroke-linecap="round"/>
       <text x="38" y="18" font-family="'Michroma', sans-serif" font-size="16" letter-spacing="4"><tspan fill="#F5F2E9">MeriScope</tspan><tspan fill="#F3C94F">.ai</tspan></text>
     </svg>
-    <div class="footer-right">
-      <a href="/cdn-cgi/l/email-protection#c2afa3b6b682afa7b0abb1a1adb2a7eca3ab"><span class="__cf_email__" data-cfemail="234e425757634e46514a50404c53460d424a">[email&#160;protected]</span></a>
-    </div>
   </div>
 </footer>
 
+
+<!-- ===== SERVICE MODAL ===== -->
+<div class="service-overlay" id="service-overlay">
+  <div class="service-modal">
+    <button class="modal-close" id="service-modal-close">&times;</button>
+    <h2 id="service-modal-title"></h2>
+    <p id="service-modal-desc"></p>
+    <ul id="service-modal-list"></ul>
+    <a href="#book" class="cta-btn" id="service-modal-cta" style="justify-content: center; text-align: center; width: 100%;">Book a Call to Learn More</a>
+  </div>
+</div>
 
 <!-- ===== BOOKING MODAL ===== -->
 <div class="booking-overlay" id="booking-overlay">
@@ -1020,11 +1078,12 @@
           <label><input type="checkbox" name="industry" value="E-commerce / DTC"><span>E-commerce / DTC</span></label>
           <label><input type="checkbox" name="industry" value="SaaS / Tech"><span>SaaS / Tech</span></label>
           <label><input type="checkbox" name="industry" value="Professional Services"><span>Professional Services</span></label>
-          <label><input type="checkbox" name="industry" value="Home Services"><span>Home Services (HVAC, Plumbing, Roofing, etc.)</span></label>
+          <label><input type="checkbox" name="industry" value="Home Services"><span>Home Services</span></label>
           <label><input type="checkbox" name="industry" value="Construction"><span>Construction</span></label>
           <label><input type="checkbox" name="industry" value="Real Estate"><span>Real Estate</span></label>
           <label><input type="checkbox" name="industry" value="Finance"><span>Finance</span></label>
           <label><input type="checkbox" name="industry" value="Agency / Marketing"><span>Agency / Marketing</span></label>
+          <label><input type="checkbox" name="industry" value="Non-profit"><span>Non-profit</span></label>
           <label><input type="checkbox" name="industry" value="Other" id="industry-other-cb"><span>Other</span></label>
         </div>
         <input type="text" class="other-input" id="industry-other-input" name="industry_other" placeholder="Tell us your industry">
@@ -1032,10 +1091,11 @@
       <div class="form-group">
         <label>What stage is your business at?</label>
         <div class="radio-group">
-          <label><input type="radio" name="stage" value="Just getting started"><span>Just getting started</span></label>
-          <label><input type="radio" name="stage" value="Growing (1-10 employees)"><span>Growing (1–10 employees)</span></label>
-          <label><input type="radio" name="stage" value="Scaling (11-50 employees)"><span>Scaling (11–50 employees)</span></label>
-          <label><input type="radio" name="stage" value="Established (50+)"><span>Established (50+)</span></label>
+          <label><input type="radio" name="stage" value="Less than 1 year"><span>Less than 1 year</span></label>
+          <label><input type="radio" name="stage" value="1-3 years"><span>1–3 years</span></label>
+          <label><input type="radio" name="stage" value="3-5 years"><span>3–5 years</span></label>
+          <label><input type="radio" name="stage" value="5-10 years"><span>5–10 years</span></label>
+          <label><input type="radio" name="stage" value="10+ years"><span>10+ years</span></label>
         </div>
       </div>
       <div class="form-group">
@@ -1164,6 +1224,136 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     var target = document.querySelector(this.getAttribute('href'));
     if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
+});
+
+// ===== SERVICE MODAL =====
+var serviceData = {
+  'ai-strategy': {
+    title: 'AI Strategy & Audit',
+    desc: 'Before building anything, we take the time to understand how your business actually operates — your workflows, your team, your goals, and the bottlenecks in between. From there, we identify the highest-impact opportunities where AI can create real, measurable value. The result is a clear, prioritized roadmap you can act on immediately.',
+    items: [
+      'Deep-dive into your current operations and tech stack',
+      'Identify high-impact AI opportunities specific to your business',
+      'Industry benchmarking to understand where you stand and where AI gives you an edge',
+      'Prioritized roadmap with clear phases and expected outcomes',
+      'ROI projections for each recommended initiative',
+      'Ongoing advisory as your AI strategy evolves'
+    ]
+  },
+  'automation': {
+    title: 'Workflow Automation',
+    desc: 'Every business has processes that drain time and energy — data entry, follow-ups, reporting, approvals, handoffs between tools. We map out those workflows and replace the manual steps with automated systems that run reliably in the background. The goal is simple: free up your team to focus on work that actually requires a human.',
+    items: [
+      'Workflow audit to identify automation opportunities',
+      'Custom integrations between your existing tools and platforms',
+      'Automated lead routing, nurturing, and follow-up sequences',
+      'Reporting and dashboard automation — real-time data without the busywork',
+      'Approval workflows and notification systems',
+      'Ongoing monitoring and optimization as your processes evolve'
+    ]
+  },
+  'web-design': {
+    title: 'Custom Web Design',
+    desc: 'Your website is often the first impression your business makes. We design and build digital experiences that look sharp, load fast, and convert visitors into customers — whether that means a focused landing page, a full marketing site, or a complex web application. Everything is custom-built to reflect your brand and grow with your business.',
+    items: [
+      'Custom landing pages designed for conversion',
+      'Full marketing websites with modern design and fast performance',
+      'Web applications with user dashboards, portals, and interactive features',
+      'Mobile-responsive design that works across all devices',
+      'SEO-optimized structure and content strategy',
+      'Analytics integration to track performance from day one'
+    ]
+  },
+  'marketing': {
+    title: 'AI Marketing Solutions',
+    desc: 'Traditional marketing relies on intuition and manual effort. We build AI-powered systems that make your marketing smarter and more efficient — from automated outreach and content generation to real-time campaign optimization. The result is better targeting, lower acquisition costs, and insights that help you double down on what actually works.',
+    items: [
+      'AI-driven audience segmentation and targeting',
+      'Automated outreach and lead generation systems',
+      'Campaign performance optimization using real-time data',
+      'Content strategy and AI-assisted content creation',
+      'Marketing attribution and ROI tracking',
+      'Competitive intelligence and market trend analysis'
+    ]
+  },
+  'tool-dev': {
+    title: 'Custom Tool Development',
+    desc: 'Off-the-shelf software forces you to work around its limitations. We build custom internal tools, dashboards, and AI agents designed specifically for how your team operates. Whether it\'s a client portal, an internal operations dashboard, or an AI assistant trained on your data — we build exactly what you need, nothing you don\'t.',
+    items: [
+      'Custom internal dashboards and reporting tools',
+      'Client-facing portals and self-service platforms',
+      'AI agents and chatbots trained on your business data',
+      'Database design and data pipeline development',
+      'API integrations to connect your tools into one system',
+      'Ongoing maintenance, updates, and feature expansion'
+    ]
+  },
+  'data-intel': {
+    title: 'Data & Intelligence',
+    desc: 'Your business generates valuable data every single day — but most of it goes unused. We help you capture, organize, and transform that data into actionable intelligence. From customer behavior patterns to competitive insights to operational metrics, we build the systems that turn raw data into clear decisions.',
+    items: [
+      'Data audit — what you have, what you\'re missing, and what matters most',
+      'Custom analytics dashboards with real-time insights',
+      'Customer behavior analysis and segmentation',
+      'Competitive intelligence and market monitoring',
+      'Predictive analytics for demand, churn, and revenue forecasting',
+      'Data infrastructure setup — pipelines, storage, and governance'
+    ]
+  }
+};
+
+var serviceOverlay = document.getElementById('service-overlay');
+var serviceModalClose = document.getElementById('service-modal-close');
+var serviceModalTitle = document.getElementById('service-modal-title');
+var serviceModalDesc = document.getElementById('service-modal-desc');
+var serviceModalList = document.getElementById('service-modal-list');
+var serviceModalCta = document.getElementById('service-modal-cta');
+
+function openServiceModal(key) {
+  var data = serviceData[key];
+  if (!data) return;
+  serviceModalTitle.textContent = data.title;
+  serviceModalDesc.textContent = data.desc;
+  serviceModalList.innerHTML = data.items.map(function(item) {
+    return '<li>' + item + '</li>';
+  }).join('');
+  serviceOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+document.querySelectorAll('.learn-more[data-service]').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    openServiceModal(this.getAttribute('data-service'));
+  });
+});
+
+document.querySelectorAll('.service-card').forEach(function(card) {
+  var btn = card.querySelector('.learn-more[data-service]');
+  if (btn) {
+    card.addEventListener('click', function() {
+      openServiceModal(btn.getAttribute('data-service'));
+    });
+  }
+});
+
+function closeServiceModal() {
+  serviceOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+serviceModalClose.addEventListener('click', closeServiceModal);
+serviceOverlay.addEventListener('click', function(e) {
+  if (e.target === serviceOverlay) closeServiceModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && serviceOverlay.classList.contains('active')) closeServiceModal();
+});
+
+serviceModalCta.addEventListener('click', function(e) {
+  e.preventDefault();
+  closeServiceModal();
+  bookingOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 });
 
 // ===== BOOKING MODAL =====
