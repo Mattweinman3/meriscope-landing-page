@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MeriScope.ai — AI Systems + Insights</title>
 <meta name="theme-color" content="#041711">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -77,17 +77,10 @@
 
   /* ===== NAV ===== */
   nav {
-    position: fixed; left: 0; right: 0; z-index: 100;
-    top: 0;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 18px 0;
-    padding-top: calc(18px + env(safe-area-inset-top, 0px));
     background: var(--abyss);
     border-bottom: none;
-  }
-  nav::after {
-    content: ''; position: absolute; left: 0; right: 0;
-    bottom: 100%; height: env(safe-area-inset-top, 0px);
-    background: var(--abyss);
   }
   nav .container { display: flex; justify-content: space-between; align-items: center; }
   nav .nav-cta {
@@ -431,7 +424,7 @@
 
   /* ===== NAV SCROLL ===== */
   nav { transition: padding 0.3s ease, background 0.3s ease; }
-  nav.scrolled { padding: 8px 0; padding-top: calc(8px + env(safe-area-inset-top, 0px)); background: rgba(4,23,17,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav.scrolled { padding: 8px 0; background: rgba(4,23,17,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
