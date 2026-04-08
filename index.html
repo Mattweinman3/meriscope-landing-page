@@ -587,10 +587,10 @@
     left: 43.4px;
   }
   .js-loaded .sub-divider.visible .sub-ping::before {
-    animation: radarPing 1.4s ease-out 2.1s 1 forwards;
+    animation: radarPing 1.4s ease-out calc(var(--sub-speed, 2s) + 0.1s) 1 forwards;
   }
   .js-loaded .sub-divider.visible .sub-ping::after {
-    animation: radarPing 1.4s ease-out 2.45s 1 forwards;
+    animation: radarPing 1.4s ease-out calc(var(--sub-speed, 2s) + 0.45s) 1 forwards;
   }
   @keyframes radarPing {
     0%   { width: 20px; height: 20px; opacity: 0.7; }
