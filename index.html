@@ -425,8 +425,9 @@
   }
 
   /* ===== NAV SCROLL ===== */
-  nav { transition: padding 0.3s ease, background 0.3s ease; }
+  nav { transition: padding 0.3s ease, background 0.3s ease, transform 0.3s ease; }
   nav.scrolled { padding: 8px 0; padding-top: 58px; background: var(--abyss); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav.nav-hidden { transform: translateY(-100%); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
@@ -1222,11 +1223,27 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach(function(el) { el.classList.add('visible'); });
 }
 
-// ===== NAV SHRINK =====
+// ===== NAV HIDE/SHOW =====
 var navEl = document.querySelector('nav');
+var lastScrollY = 0;
+var isMobile = window.innerWidth <= 768;
+window.addEventListener('resize', function() { isMobile = window.innerWidth <= 768; });
 window.addEventListener('scroll', function() {
-  if (window.scrollY > 60) { navEl.classList.add('scrolled'); }
-  else { navEl.classList.remove('scrolled'); }
+  var currentScrollY = window.scrollY;
+  if (currentScrollY > 60) {
+    navEl.classList.add('scrolled');
+    if (isMobile) {
+      if (currentScrollY > lastScrollY) {
+        navEl.classList.add('nav-hidden');
+      } else {
+        navEl.classList.remove('nav-hidden');
+      }
+    }
+  } else {
+    navEl.classList.remove('scrolled');
+    navEl.classList.remove('nav-hidden');
+  }
+  lastScrollY = currentScrollY;
 }, { passive: true });
 
 // ===== PARALLAX ORBS =====
