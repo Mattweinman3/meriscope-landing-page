@@ -1,0 +1,8 @@
+{
+  "name": "MeriScope.ai",
+  "short_name": "MeriScope",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#041711",
+  "theme_color": "#041711"
+}
