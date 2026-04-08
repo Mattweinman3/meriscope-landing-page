@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MeriScope.ai — AI Systems + Insights</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="MeriScope partners with founders and operators to build AI systems that drive real growth. Strategy, automation, and custom tools — built together.">
+
+<!-- Open Graph / Link Previews -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MeriScope.ai — AI Systems + Insights">
+<meta property="og:description" content="We partner with founders and operators to build AI systems that drive real growth. Strategy, automation, and custom tools — built together.">
+<meta property="og:image" content="https://meriscope.ai/og-image.png">
+<meta property="og:url" content="https://meriscope.ai">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MeriScope.ai — AI Systems + Insights">
+<meta name="twitter:description" content="We partner with founders and operators to build AI systems that drive real growth. Strategy, automation, and custom tools — built together.">
+<meta name="twitter:image" content="https://meriscope.ai/og-image.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -258,6 +273,96 @@
   .final-cta .section-body { margin: 0 auto 40px; text-align: center; }
   .final-cta .limit-note { margin-top: 24px; font-size: 13px; color: var(--teal); letter-spacing: 0.5px; }
 
+  /* ===== BOOKING MODAL ===== */
+  .booking-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4,23,17,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    z-index: 500; overflow-y: auto; padding: 40px 24px;
+  }
+  .booking-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
+  .booking-modal {
+    background: var(--kelp); border: 1px solid rgba(42,122,102,0.2);
+    border-radius: 12px; max-width: 600px; width: 100%; padding: 48px 40px;
+    position: relative; margin: auto;
+  }
+  .booking-modal .modal-close {
+    position: absolute; top: 16px; right: 16px; background: none; border: none;
+    color: var(--warmgray); font-size: 24px; cursor: pointer; padding: 8px;
+    line-height: 1; transition: color 0.3s;
+  }
+  .booking-modal .modal-close:hover { color: var(--offwhite); }
+  .booking-modal h2 {
+    font-family: 'Michroma', sans-serif; font-size: 20px; letter-spacing: 2px;
+    color: #fff; margin-bottom: 8px;
+  }
+  .booking-modal .modal-subtitle {
+    font-size: 14px; color: var(--warmgray); margin-bottom: 32px; line-height: 1.6;
+  }
+  .booking-form label {
+    display: block; font-family: 'Michroma', sans-serif; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--submarine);
+    margin-bottom: 8px;
+  }
+  .booking-form .form-group { margin-bottom: 24px; }
+  .booking-form input[type="text"],
+  .booking-form input[type="email"],
+  .booking-form input[type="url"],
+  .booking-form textarea {
+    width: 100%; padding: 12px 16px; background: rgba(4,23,17,0.6);
+    border: 1px solid rgba(42,122,102,0.25); border-radius: 6px;
+    color: var(--offwhite); font-family: 'DM Sans', sans-serif; font-size: 15px;
+    transition: border-color 0.3s; outline: none;
+  }
+  .booking-form input:focus, .booking-form textarea:focus {
+    border-color: var(--submarine);
+  }
+  .booking-form textarea { min-height: 100px; resize: vertical; }
+  .booking-form .checkbox-group {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .booking-form .checkbox-group label {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; letter-spacing: 0;
+    text-transform: none; color: var(--offwhite); cursor: pointer;
+    padding: 8px 14px; border: 1px solid rgba(42,122,102,0.25); border-radius: 6px;
+    transition: all 0.2s; user-select: none;
+  }
+  .booking-form .checkbox-group label:hover { border-color: var(--teal); }
+  .booking-form .checkbox-group input[type="checkbox"] { display: none; }
+  .booking-form .checkbox-group input[type="checkbox"]:checked + span {
+    color: var(--submarine);
+  }
+  .booking-form .checkbox-group label:has(input:checked) {
+    border-color: var(--submarine); background: rgba(243,201,79,0.08);
+  }
+  .booking-form .other-input {
+    display: none; margin-top: 8px;
+  }
+  .booking-form .other-input.visible { display: block; }
+  .booking-form .radio-group {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .booking-form .radio-group label {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; letter-spacing: 0;
+    text-transform: none; color: var(--offwhite); cursor: pointer;
+    padding: 8px 14px; border: 1px solid rgba(42,122,102,0.25); border-radius: 6px;
+    transition: all 0.2s; user-select: none;
+  }
+  .booking-form .radio-group label:hover { border-color: var(--teal); }
+  .booking-form .radio-group input[type="radio"] { display: none; }
+  .booking-form .radio-group label:has(input:checked) {
+    border-color: var(--submarine); background: rgba(243,201,79,0.08);
+  }
+  .booking-form .form-submit {
+    width: 100%; margin-top: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .booking-modal { padding: 32px 20px; }
+    .booking-form .checkbox-group, .booking-form .radio-group { flex-direction: column; }
+  }
+
   /* ===== FOOTER ===== */
   footer {
     padding: 48px 0;
@@ -322,8 +427,8 @@
     position: relative;
     height: 60px;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 48%, black 52%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 48%, black 52%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 52%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 52%, transparent 100%);
   }
   .sub-divider.on-kelp { }
   .sub-divider.on-abyss { }
@@ -846,7 +951,7 @@
     <div class="eyebrow reveal">Let's Build Together</div>
     <h2 class="section-heading reveal">Ready to put AI to work for your business?</h2>
     <p class="section-body reveal">Book a free 30-minute strategy call. We'll talk about your business, explore where AI fits, and map out a path forward — whether you work with us or not.</p>
-    <a href="#" class="cta-btn reveal">Book Your Strategy Call</a>
+    <a href="#book" class="cta-btn reveal">Book Your Strategy Call</a>
     <p class="limit-note reveal">Currently accepting 3–5 new partners.</p>
   </div>
   <div class="sub-divider" style="margin-top: 48px;">
@@ -885,6 +990,93 @@
   </div>
 </footer>
 
+
+<!-- ===== BOOKING MODAL ===== -->
+<div class="booking-overlay" id="booking-overlay">
+  <div class="booking-modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <h2>Book Your Strategy Call</h2>
+    <p class="modal-subtitle">Tell us a bit about your business so we can make the most of our time together.</p>
+    <form class="booking-form" id="booking-form">
+      <div class="form-group">
+        <label for="bf-name">Name *</label>
+        <input type="text" id="bf-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="bf-email">Email *</label>
+        <input type="email" id="bf-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="bf-business">Business Name *</label>
+        <input type="text" id="bf-business" name="business" required>
+      </div>
+      <div class="form-group">
+        <label for="bf-website">Business Website</label>
+        <input type="text" id="bf-website" name="website">
+      </div>
+      <div class="form-group">
+        <label>What industry are you in?</label>
+        <div class="checkbox-group" id="industry-group">
+          <label><input type="checkbox" name="industry" value="E-commerce / DTC"><span>E-commerce / DTC</span></label>
+          <label><input type="checkbox" name="industry" value="SaaS / Tech"><span>SaaS / Tech</span></label>
+          <label><input type="checkbox" name="industry" value="Professional Services"><span>Professional Services</span></label>
+          <label><input type="checkbox" name="industry" value="Home Services"><span>Home Services (HVAC, Plumbing, Roofing, etc.)</span></label>
+          <label><input type="checkbox" name="industry" value="Construction"><span>Construction</span></label>
+          <label><input type="checkbox" name="industry" value="Real Estate"><span>Real Estate</span></label>
+          <label><input type="checkbox" name="industry" value="Finance"><span>Finance</span></label>
+          <label><input type="checkbox" name="industry" value="Agency / Marketing"><span>Agency / Marketing</span></label>
+          <label><input type="checkbox" name="industry" value="Other" id="industry-other-cb"><span>Other</span></label>
+        </div>
+        <input type="text" class="other-input" id="industry-other-input" name="industry_other" placeholder="Tell us your industry">
+      </div>
+      <div class="form-group">
+        <label>What stage is your business at?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="stage" value="Just getting started"><span>Just getting started</span></label>
+          <label><input type="radio" name="stage" value="Growing (1-10 employees)"><span>Growing (1–10 employees)</span></label>
+          <label><input type="radio" name="stage" value="Scaling (11-50 employees)"><span>Scaling (11–50 employees)</span></label>
+          <label><input type="radio" name="stage" value="Established (50+)"><span>Established (50+)</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>What are you most interested in?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="interests" value="AI-powered systems"><span>AI-powered systems</span></label>
+          <label><input type="checkbox" name="interests" value="Workflow automation"><span>Workflow automation</span></label>
+          <label><input type="checkbox" name="interests" value="Custom internal tools"><span>Custom internal tools</span></label>
+          <label><input type="checkbox" name="interests" value="Marketing strategy"><span>Marketing strategy</span></label>
+          <label><input type="checkbox" name="interests" value="Data & analytics"><span>Data & analytics</span></label>
+          <label><input type="checkbox" name="interests" value="Not sure yet"><span>Not sure yet — let's explore</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>What's your biggest challenge right now?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="challenges" value="Too many manual processes"><span>Too many manual processes</span></label>
+          <label><input type="checkbox" name="challenges" value="Scaling without adding headcount"><span>Scaling without adding headcount</span></label>
+          <label><input type="checkbox" name="challenges" value="Lack of visibility into data"><span>Lack of visibility into data</span></label>
+          <label><input type="checkbox" name="challenges" value="Marketing isn't converting"><span>Marketing isn't converting</span></label>
+          <label><input type="checkbox" name="challenges" value="No clear growth plan"><span>No clear growth plan</span></label>
+          <label><input type="checkbox" name="challenges" value="Tech stack is a mess"><span>Tech stack is a mess</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>What's your timeline?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="timeline" value="ASAP"><span>ASAP</span></label>
+          <label><input type="radio" name="timeline" value="Within the next month"><span>Within the next month</span></label>
+          <label><input type="radio" name="timeline" value="Next quarter"><span>Next quarter</span></label>
+          <label><input type="radio" name="timeline" value="Just exploring"><span>Just exploring</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bf-anything">Anything else you'd like us to know?</label>
+        <textarea id="bf-anything" name="anything_else" placeholder="Goals, context, questions — whatever's on your mind."></textarea>
+      </div>
+      <button type="submit" class="cta-btn form-submit">Submit & Book Your Call</button>
+    </form>
+  </div>
+</div>
 
 <script>
 // ===== TYPED TEXT =====
@@ -967,10 +1159,73 @@ document.addEventListener('mousemove', function(e) {
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
   anchor.addEventListener('click', function(e) {
+    if (this.getAttribute('href') === '#book' || this.classList.contains('book-call-trigger')) return;
     e.preventDefault();
     var target = document.querySelector(this.getAttribute('href'));
     if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
+});
+
+// ===== BOOKING MODAL =====
+var bookingOverlay = document.getElementById('booking-overlay');
+var modalClose = document.getElementById('modal-close');
+var bookingForm = document.getElementById('booking-form');
+var industryOtherCb = document.getElementById('industry-other-cb');
+var industryOtherInput = document.getElementById('industry-other-input');
+
+// Open modal from any book-a-call link
+document.querySelectorAll('a[href="#book"], .nav-cta, a.cta-btn[href="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    bookingOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// Close modal
+function closeModal() {
+  bookingOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+modalClose.addEventListener('click', closeModal);
+bookingOverlay.addEventListener('click', function(e) {
+  if (e.target === bookingOverlay) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Show "Other" text input when Other checkbox is checked
+industryOtherCb.addEventListener('change', function() {
+  industryOtherInput.classList.toggle('visible', this.checked);
+  if (!this.checked) industryOtherInput.value = '';
+});
+
+// Form submission → save data to localStorage (for now) and redirect to Google Calendar
+bookingForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var formData = new FormData(bookingForm);
+  var data = {};
+  formData.forEach(function(value, key) {
+    if (data[key]) {
+      if (!Array.isArray(data[key])) data[key] = [data[key]];
+      data[key].push(value);
+    } else {
+      data[key] = value;
+    }
+  });
+
+  // Store submission locally (you can later replace this with a Google Sheets/webhook endpoint)
+  var submissions = JSON.parse(localStorage.getItem('meriscope_submissions') || '[]');
+  data.submitted_at = new Date().toISOString();
+  submissions.push(data);
+  localStorage.setItem('meriscope_submissions', JSON.stringify(submissions));
+
+  // Redirect to Google Calendar Appointment Schedule
+  window.open('https://calendar.app.google/NDhjn3DFvBkhzfDp9', '_blank');
+  closeModal();
+  bookingForm.reset();
+  industryOtherInput.classList.remove('visible');
 });
 </script>
 
