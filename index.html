@@ -33,7 +33,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--abyss); padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+  html { scroll-behavior: smooth; background: var(--abyss); }
 
   body {
     background: var(--abyss);
@@ -76,7 +76,8 @@
 
   /* ===== NAV ===== */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; left: 0; right: 0; z-index: 100;
+    top: calc(-1 * env(safe-area-inset-top, 0px));
     padding: 18px 0;
     padding-top: calc(18px + env(safe-area-inset-top, 0px));
     background: var(--abyss);
