@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MeriScope.ai — AI Systems + Insights</title>
+<meta name="theme-color" content="#041711">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="MeriScope partners with founders and operators to build AI systems that drive real growth. Strategy, automation, and custom tools — built together.">
 
@@ -77,11 +78,16 @@
   /* ===== NAV ===== */
   nav {
     position: fixed; left: 0; right: 0; z-index: 100;
-    top: calc(-1 * env(safe-area-inset-top, 0px));
+    top: 0;
     padding: 18px 0;
     padding-top: calc(18px + env(safe-area-inset-top, 0px));
     background: var(--abyss);
     border-bottom: none;
+  }
+  nav::after {
+    content: ''; position: absolute; left: 0; right: 0;
+    bottom: 100%; height: env(safe-area-inset-top, 0px);
+    background: var(--abyss);
   }
   nav .container { display: flex; justify-content: space-between; align-items: center; }
   nav .nav-cta {
