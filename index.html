@@ -431,7 +431,7 @@
 
   /* ===== NAV SCROLL ===== */
   nav { transition: padding 0.3s ease, background 0.3s ease; }
-  nav.scrolled { padding: 8px 0; background: rgba(4,23,17,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav.scrolled { padding: 8px 0; padding-top: calc(8px + env(safe-area-inset-top, 0px)); background: rgba(4,23,17,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
