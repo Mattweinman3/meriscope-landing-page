@@ -76,8 +76,9 @@
 
   /* ===== NAV ===== */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: -50px; left: 0; right: 0; z-index: 100;
     padding: 18px 0;
+    padding-top: 68px;
     background: var(--abyss);
     border-bottom: none;
   }
@@ -423,7 +424,7 @@
 
   /* ===== NAV SCROLL ===== */
   nav { transition: padding 0.3s ease, background 0.3s ease; }
-  nav.scrolled { padding: 8px 0; background: rgba(4,23,17,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav.scrolled { padding: 8px 0; padding-top: 58px; background: var(--abyss); border-bottom: 1px solid rgba(42,122,102,0.15); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
