@@ -427,9 +427,8 @@
   }
 
   /* ===== NAV SCROLL ===== */
-  nav { transition: padding 0.3s ease, transform 0.3s ease; }
+  nav { transition: padding 0.3s ease; }
   nav.scrolled { padding: 8px 0; padding-top: calc(8px + env(safe-area-inset-top, 0px)); }
-  nav.nav-hidden { transform: translateY(-100%); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
@@ -1225,25 +1224,11 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach(function(el) { el.classList.add('visible'); });
 }
 
-// ===== NAV HIDE/SHOW =====
+// ===== NAV SHRINK =====
 var navEl = document.querySelector('nav');
-var lastScrollY = 0;
 window.addEventListener('scroll', function() {
-  var currentScrollY = window.scrollY;
-  if (currentScrollY > 60) {
-    navEl.classList.add('scrolled');
-    if (currentScrollY > lastScrollY) {
-      // Scrolling down — hide nav
-      navEl.classList.add('nav-hidden');
-    } else {
-      // Scrolling up — show nav
-      navEl.classList.remove('nav-hidden');
-    }
-  } else {
-    navEl.classList.remove('scrolled');
-    navEl.classList.remove('nav-hidden');
-  }
-  lastScrollY = currentScrollY;
+  if (window.scrollY > 60) { navEl.classList.add('scrolled'); }
+  else { navEl.classList.remove('scrolled'); }
 }, { passive: true });
 
 // ===== PARALLAX ORBS =====
