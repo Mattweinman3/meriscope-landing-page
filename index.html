@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MeriScope.ai — AI Systems + Insights</title>
-<meta name="theme-color" content="#041711">
+<meta name="theme-color" content="#041711" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#041711" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="MeriScope partners with founders and operators to build AI systems that drive real growth. Strategy, automation, and custom tools — built together.">
 
@@ -422,13 +425,6 @@
     opacity: 0.02; pointer-events: none; z-index: 9999;
   }
 
-  /* ===== STATUS BAR COVER ===== */
-  .status-bar-cover {
-    position: fixed; top: 0; left: 0; right: 0; height: 50px;
-    background: var(--abyss); z-index: 99;
-    pointer-events: none;
-  }
-
   /* ===== NAV SCROLL ===== */
   nav { transition: padding 0.3s ease, background 0.3s ease, transform 0.3s ease; }
   nav.scrolled { padding: 8px 0; background: var(--abyss); border-bottom: 1px solid rgba(42,122,102,0.15); }
@@ -625,7 +621,6 @@
 <body>
 
 <div class="progress-bar" id="progress-bar"></div>
-<div class="status-bar-cover"></div>
 
 <!-- ===== NAV — Full logo with underline ===== -->
 <nav>
