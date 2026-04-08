@@ -422,9 +422,17 @@
     opacity: 0.02; pointer-events: none; z-index: 9999;
   }
 
+  /* ===== STATUS BAR COVER ===== */
+  .status-bar-cover {
+    position: fixed; top: 0; left: 0; right: 0; height: 50px;
+    background: var(--abyss); z-index: 99;
+    pointer-events: none;
+  }
+
   /* ===== NAV SCROLL ===== */
-  nav { transition: padding 0.3s ease, background 0.3s ease; }
-  nav.scrolled { padding: 8px 0; background: rgba(4,23,17,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav { transition: padding 0.3s ease, background 0.3s ease, transform 0.3s ease; }
+  nav.scrolled { padding: 8px 0; background: var(--abyss); border-bottom: 1px solid rgba(42,122,102,0.15); }
+  nav.nav-hidden { transform: translateY(-100%); }
 
   /* ===== CTA PULSE ===== */
   .final-cta .cta-btn { position: relative; overflow: hidden; }
@@ -617,6 +625,7 @@
 <body>
 
 <div class="progress-bar" id="progress-bar"></div>
+<div class="status-bar-cover"></div>
 
 <!-- ===== NAV — Full logo with underline ===== -->
 <nav>
@@ -1220,11 +1229,25 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach(function(el) { el.classList.add('visible'); });
 }
 
-// ===== NAV SHRINK =====
+// ===== NAV HIDE/SHOW =====
 var navEl = document.querySelector('nav');
+var lastScrollY = 0;
 window.addEventListener('scroll', function() {
-  if (window.scrollY > 60) { navEl.classList.add('scrolled'); }
-  else { navEl.classList.remove('scrolled'); }
+  var currentScrollY = window.scrollY;
+  if (currentScrollY > 60) {
+    navEl.classList.add('scrolled');
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down — hide nav
+      navEl.classList.add('nav-hidden');
+    } else {
+      // Scrolling up — show nav
+      navEl.classList.remove('nav-hidden');
+    }
+  } else {
+    navEl.classList.remove('scrolled');
+    navEl.classList.remove('nav-hidden');
+  }
+  lastScrollY = currentScrollY;
 }, { passive: true });
 
 // ===== PARALLAX ORBS =====
